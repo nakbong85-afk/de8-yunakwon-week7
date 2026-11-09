@@ -1,0 +1,53 @@
+# Q4 - Spark Standalone 클러스터 (master 1 + worker 2)
+# 실행:  docker compose -f docker-compose.spark.yaml up -d
+# 제출:  docker compose -f docker-compose.spark.yaml exec spark-master \
+#          /opt/spark/bin/spark-submit --master spark://spark-master:7077 /opt/spark/jobs/wordcount.py
+# master Web UI: http://localhost:8081   (8080 은 Airflow 가 사용)
+x-spark-common: &spark-common
+  image: apache/spark:3.5.3
+  volumes:
+    - ./jobs:/opt/spark/jobs
+    - ./data:/opt/spark/data
+  networks:
+    - spark-net
+
+services:
+  spark-master:
+    <<: *spark-common
+    container_name: spark-master
+    hostname: spark-master
+    command: >
+      /opt/spark/bin/spark-class org.apache.spark.deploy.master.Master
+      --host spark-master --port 7077 --webui-port 8081
+    ports:
+      - "8081:8081"
+      - "7077:7077"
+
+  spark-worker-1:
+    <<: *spark-common
+    container_name: spark-worker-1
+    hostname: spark-worker-1
+    command: >
+      /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker
+      spark://spark-master:7077 --cores 2 --memory 2g --webui-port 8082
+    ports:
+      - "8082:8082"
+    depends_on:
+      - spark-master
+
+  spark-worker-2:
+    <<: *spark-common
+    container_name: spark-worker-2
+    hostname: spark-worker-2
+    command: >
+      /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker
+      spark://spark-master:7077 --cores 2 --memory 2g --webui-port 8083
+    ports:
+      - "8083:8083"
+    depends_on:
+      - spark-master
+
+networks:
+  spark-net:
+    name: spark-net-yunakwon
+    driver: bridge

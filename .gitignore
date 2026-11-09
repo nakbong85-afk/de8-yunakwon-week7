@@ -12,3 +12,6 @@ data/
 .aws/
 *_accessKeys.csv
 *_credentials.csv
+
+# Airflow 가 생성하는 설정 사본
+config/
