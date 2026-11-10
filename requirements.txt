@@ -1,0 +1,7 @@
+# Q5 - 커스텀 Airflow 이미지에 추가로 설치하는 파이썬 패키지
+apache-airflow-providers-amazon
+apache-airflow-providers-apache-spark
+# Spark provider(6.x) 는 pyspark-client>=4.0 을 함께 설치한다. pyspark 와 pyspark-client 는 같은 폴더에
+# 설치되므로 두 버전이 다르면 파일이 섞인다. 그래서 둘을 같은 버전으로 고정한다.
+pyspark==4.3.0
+pyspark-client==4.3.0

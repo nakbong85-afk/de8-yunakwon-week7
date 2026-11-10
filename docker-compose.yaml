@@ -49,8 +49,10 @@ x-airflow-common:
   # In order to add custom dependencies or upgrade provider distributions you can use your extended image.
   # Comment the image line, place your Dockerfile in the directory where you placed the docker-compose.yaml
   # and uncomment the "build" line below, Then run `docker-compose build` to build the images.
-  image: ${AIRFLOW_IMAGE_NAME:-apache/airflow:3.4.0}
-  # build: .
+  # Q5: 공식 이미지 대신 이 폴더의 Dockerfile 로 빌드한 커스텀 이미지를 쓴다.
+  #     x-airflow-common 한 곳만 바꾸면 이를 물려받는 모든 airflow-* 서비스가 함께 바뀐다.
+  image: ${AIRFLOW_IMAGE_NAME:-week7-airflow:yunakwon}
+  build: .
   env_file:
     - ${ENV_FILE_PATH:-.env}
   environment:
