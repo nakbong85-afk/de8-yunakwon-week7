@@ -15,8 +15,8 @@
 
 ## 실습 환경
 
-Windows 11 + Docker Desktop(WSL2), 터미널은 VS Code 의 Git Bash. AWS 는 S3(ap-northeast-2)만 사용했다.
+Windows 11 + Docker Desktop(WSL2), 터미널은 VS Code 의 Git Bash. Airflow 3.4.0(CeleryExecutor, 커스텀 이미지 week7-airflow:yunakwon)과 Spark Standalone 3.5.3(master 1 + worker 2)을 docker compose 로 띄웠고, AWS 는 S3(ap-northeast-2)만 사용했다.
 
 ## 회고
 
-S3 -> Spark -> S3 로 이어지는 파이프라인을 Airflow DAG 하나로 묶으면서, 자격증명을 코드 밖에 두는 방법을 익혔다.
+catchup, XCom, 재시도처럼 Airflow 가 실행 이력을 관리하는 방식을 직접 돌려 보며 이해했다. S3 -> Spark -> S3 로 이어지는 파이프라인을 Airflow DAG 하나로 묶으면서, 자격증명을 코드 밖에 두는 방법도 익혔다.
