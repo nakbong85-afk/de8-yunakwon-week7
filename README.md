@@ -15,8 +15,8 @@
 
 ## 실습 환경
 
-(Q10에서 작성)
+Windows 11 + Docker Desktop(WSL2) 위에서 Airflow 3.4.0 과 Spark 3.5.3 을 docker compose 로 띄워 실습했다.
 
 ## 회고
 
-(Q10에서 작성)
+Airflow DAG 작성, Spark 잡 제출, S3 연동을 각각 실습했다.
