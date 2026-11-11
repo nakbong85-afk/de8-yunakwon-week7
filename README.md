@@ -15,8 +15,8 @@
 
 ## 실습 환경
 
-Windows 11 + Docker Desktop(WSL2) 위에서 Airflow 3.4.0 과 Spark 3.5.3 을 docker compose 로 띄워 실습했다.
+Windows 11 + Docker Desktop(WSL2). Airflow 3.4.0(CeleryExecutor, 커스텀 이미지 week7-airflow:yunakwon)과 Spark Standalone 3.5.3(master 1 + worker 2)을 docker compose 로 띄웠다.
 
 ## 회고
 
-Airflow DAG 작성, Spark 잡 제출, S3 연동을 각각 실습했다.
+catchup, XCom, 재시도처럼 Airflow 가 실행 이력을 관리하는 방식을 직접 돌려 보며 이해했다.
