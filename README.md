@@ -15,8 +15,8 @@
 
 ## 실습 환경
 
-Windows 11 + Docker Desktop(WSL2) 위에서 Airflow 3.4.0 과 Spark 3.5.3 을 docker compose 로 띄워 실습했다.
+Windows 11 + Docker Desktop(WSL2), 터미널은 VS Code 의 Git Bash. AWS 는 S3(ap-northeast-2)만 사용했다.
 
 ## 회고
 
-Airflow DAG 작성, Spark 잡 제출, S3 연동을 각각 실습했다.
+S3 -> Spark -> S3 로 이어지는 파이프라인을 Airflow DAG 하나로 묶으면서, 자격증명을 코드 밖에 두는 방법을 익혔다.
